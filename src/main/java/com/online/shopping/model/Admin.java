@@ -11,14 +11,14 @@ public class Admin {
     private String address;
     private int sex;
     private String avatar;
-    private int phone;
+    private String phone;
     private String email;
-    private String birthday;
+    private Date birthday;
     private Date firstReg;
     private Date lastLogin;
     private int status;
 
-    public Admin(int id, String userName, String passWord, int type, String name, String address, int sex, String avatar, int phone, String email, String birthday, Date firstReg, Date lastLogin, int status) {
+    public Admin(int id, String userName, String passWord, int type, String name, String address, int sex, String avatar, String phone, String email, Date birthday, Date firstReg, Date lastLogin, int status) {
         this.id = id;
         this.userName = userName;
         this.passWord = passWord;
@@ -33,6 +33,10 @@ public class Admin {
         this.firstReg = firstReg;
         this.lastLogin = lastLogin;
         this.status = status;
+    }
+
+    public Admin() {
+
     }
 
     public int getId() {
@@ -99,11 +103,11 @@ public class Admin {
         this.avatar = avatar;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -115,11 +119,11 @@ public class Admin {
         this.email = email;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

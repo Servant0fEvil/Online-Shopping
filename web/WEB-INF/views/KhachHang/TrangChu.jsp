@@ -1,44 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@include file="/WEB-INF/views/header.jsp" %>
-<!-- START of NAVIGATION WRAPPER -->
-<div class="navigation-wrapper">
-
-    <!-- MAIN NAVIGATION -->
-
-    <ul id="navigation" class="clearfix left">
-        <li class="home"><a href="/trang-chu"><img src="/images/home.png" alt=""/>Home</a></li>
-        <li><a href="/san-pham-noi-bat">Sản phẩm nổi bật</a></li>
-
-        <li><a href="/tin-tuc">Tin tức</a></li>
-        <!--                    <li><a href="blog-single.html">PHẢN HỒI CHI TIẾT</a></li>-->
-        <!--            		<li><a href="full-width.html">Fullwidth</a></li>            		            	-->
-        <!--            		<li><a href="contact.html">LIÊN HỆ</a></li>-->
-        <li><a href="#">Ngành hàng</a>
-            <ul>
-                <li><a href="/nganh-hang">Thiết bị điện tử</a></li>
-                <li><a href="#">Giày</a></li>
-                <li><a href="#">Đồ gia dụng</a></li>
-                <li><a href="#">Quần áo</a></li>
-                <li><a href="#">Sách</a></li>
-                <li><a href="#">ô tô- xe máy</a></li>
-            </ul>
-        </li>
-        <li><a href="/don-hang">Đơn hàng</a></li>
-        <li class="timkiem">
-            <form class="search " method="get" action="#">
-                <fieldset>
-                    <input type="text" id="s" name="s" value="Search"/>
-                    <input class="submit" type="submit" value="Submit"/>
-                </fieldset>
-            </form><!-- end of .search -->
-
-        </li>
-    </ul><!-- end of #navigation -->
-
-
-</div>
-<!-- END of BOTTOM -->
+<%@include file="/WEB-INF/views/menubar.jsp"%>
 <div class="container">
 
     <!-- START of SLIDER -->

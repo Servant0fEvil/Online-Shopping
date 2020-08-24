@@ -1,8 +1,18 @@
 package com.online.shopping.controller;
 
+import com.online.shopping.model.Member;
+import com.online.shopping.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * @author ServantOfEvil
@@ -11,6 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
+    @Autowired
+    MemberService memberService;
+
     @RequestMapping("trang-chu")
     public ModelAndView index() {
         ModelAndView model = new ModelAndView("/KhachHang/TrangChu");
@@ -18,16 +31,66 @@ public class MainController {
         return model;
     }
 
-    @RequestMapping("dang-ky")
+    @RequestMapping(value = "dang-ky",method = RequestMethod.GET)
     public ModelAndView dangKy() {
 
         return new ModelAndView("KhachHang/DangKy");
     }
 
-    @RequestMapping("dang-nhap")
-    public ModelAndView dangNhap() {
+
+    @RequestMapping(value = "dang-ky",method = RequestMethod.POST)
+    public ModelAndView regProcess(HttpServletRequest request,HttpServletResponse response){
+        ModelAndView model = null;
+
+        String username = request.getParameter("name");
+        String password = request.getParameter("pw");
+        String password2 = request.getParameter("pw2");
+        String fullname = request.getParameter("fl");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String adress = request.getParameter("address");
+
+
+        if( (password.equals(password2) ==  true) && phone.length() == 10 ){
+            if(memberService.validate(new Member(username,password)) == null){
+                memberService.addMember(new Member(username,password,fullname,adress,phone,email,1,"",new Date(),new Date(),new Date(),1));
+                model = new ModelAndView("KhachHang/DangNhap");
+            }
+        } else {
+                model = new ModelAndView("KhachHang/DangKy");
+                model.addObject("message","Error");
+        }
+        return model;
+
+    }
+
+    @RequestMapping(value = "dang-nhap",method = RequestMethod.GET)
+    public ModelAndView dangNhap(HttpServletRequest request,HttpServletResponse response)
+    {
         return new ModelAndView("KhachHang/DangNhap");
     }
+
+    @RequestMapping(value = "dang-nhap",method = RequestMethod.POST)
+    public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse response){
+            ModelAndView model = null;
+
+            String username = request.getParameter("us");
+            String password = request.getParameter("pw");
+
+
+            Member member1 = memberService.validate(new Member(username,password));
+
+            if(member1 != null){
+                model = new ModelAndView("KhachHang/TrangChu");
+            } else {
+                model = new ModelAndView("KhachHang/DangNhap");
+                model.addObject("message", "Username or Password is wrong!!");
+            }
+             return model;
+    }
+
+
+
 
     @RequestMapping("san-pham-noi-bat")
     public ModelAndView sanPhamNoiBat() {

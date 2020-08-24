@@ -8,13 +8,13 @@
         <div class="login">
             <h3><span class="noibat">ĐĂNG NHẬP</span></h3>
 
-            <form class="login-form" method="post" action="#">
+            <form  class="login-form"  action="/dang-nhap" method="post">
                 <fieldset>
-                    <br/>Tên đăng nhập: <input type="text" id="email" placeholder="Name"/>
-                    Mật khẩu: <input type="password" id="pw" placeholder="Password"/>
+                    <br/>Tên đăng nhập: <input type="text" name="us" placeholder="Name"/>
+                    Mật khẩu: <input type="password" name="pw" placeholder="Password"/>
 
                     <input class="login-btn" type="submit" value="Đăng nhập"/>
-                </fieldset>
+                </fieldset>${message}
             </form>
         </div>
     </div>

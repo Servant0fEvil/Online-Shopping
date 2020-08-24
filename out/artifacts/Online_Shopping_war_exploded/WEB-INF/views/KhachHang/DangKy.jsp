@@ -11,16 +11,17 @@
             <form class="login-form" method="post" action="#">
                 <fieldset>
                     <br/>
-                    Tên đăng nhập: <input type="text" id="name" placeholder="Name"/>
-                    Mật khẩu: <input type="password" id="pw" placeholder="Password"/>
-                    Nhập lại mật khẩu: <input type="password" id="pw2" placeholder="Password"/>
-                    Số điện thoại: <input type="text" id="phone" placeholder="Phone"/>
-                    Email: <input type="text" id="email" placeholder="Email Address"/>
-                    Địa chỉ: <input type="text" id="address" placeholder="Address"/>
+                    Tên đăng nhập: <input type="text" name="name" placeholder="Name"/>
+                    Mật khẩu: <input type="password" name="pw" placeholder="Password"/>
+                    Nhập lại mật khẩu: <input type="password" name="pw2" placeholder="Password"/>
+                    Họ và tên:<input type="text" name="fl" placeholder="Fullname"/>
+                    Số điện thoại: <input type="text" name="phone" placeholder="Phone"/>
+                    Email: <input type="text" name="email" placeholder="Email Address"/>
+                    Địa chỉ: <input type="text" name="address" placeholder="Address"/>
 
                     <input class="login-btn" type="submit" value="Đăng ký"/>
                 </fieldset>
-
+                ${message}
             </form>
         </div>
     </div>

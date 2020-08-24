@@ -72,4 +72,14 @@ public class MemberDAOImpl implements MemberDAO {
     public int deleteMember(int id) {
         return jdbcTemplate.update("delete from thanhvien where ID_thanhvien = ?", id);
     }
+
+    @Override
+    public Member validate(Member member) {
+        String sql = "select * from thanhvien where TaiKhoan='" + member.getUserName() + "' and MatKhau='" + member.getPassWord()
+                + "'";
+
+
+        List<Member> users = jdbcTemplate.query(sql, new MemberRowMapper());
+        return users.size() > 0 ? users.get(0) : null;
+    }
 }

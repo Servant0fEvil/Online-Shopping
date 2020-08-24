@@ -2,10 +2,10 @@ package com.online.shopping.model;
 
 public class Product {
     private int id;
-    private ProductType ProductType;
+    private String IDType;
     private String name;
     private double cost;
-    private Producer Producer;
+    private String IDProducer;
     private int importDate;
     private int quantity;
     private int image;
@@ -76,19 +76,19 @@ public class Product {
         this.state = state;
     }
 
-    public ProductType getProductType() {
-        return ProductType;
+    public String getIDType() {
+        return IDType;
     }
 
-    public void setProductType(ProductType productType) {
-        ProductType = productType;
+    public void setIDType(String IDType) {
+        this.IDType = IDType;
     }
 
-    public Producer getProducer() {
-        return Producer;
+    public String getIDProducer() {
+        return IDProducer;
     }
 
-    public void setProducer(Producer producer) {
-        Producer = producer;
+    public void setIDProducer(String  IDProducer) {
+        this.IDProducer = IDProducer;
     }
 }
