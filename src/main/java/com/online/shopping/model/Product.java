@@ -1,14 +1,16 @@
 package com.online.shopping.model;
 
+import java.util.Date;
+
 public class Product {
     private int id;
-    private String IDType;
+    private int IDType;
     private String name;
     private double cost;
-    private String IDProducer;
-    private int importDate;
+    private int IDProducer;
+    private Date importDate;
     private int quantity;
-    private int image;
+    private String image;
     private String detail;
     private int state;
 
@@ -36,11 +38,11 @@ public class Product {
         this.cost = cost;
     }
 
-    public int getImportDate() {
+    public Date getImportDate() {
         return importDate;
     }
 
-    public void setImportDate(int importDate) {
+    public void setImportDate(Date importDate) {
         this.importDate = importDate;
     }
 
@@ -52,11 +54,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String  image) {
         this.image = image;
     }
 
@@ -76,19 +78,19 @@ public class Product {
         this.state = state;
     }
 
-    public String getIDType() {
+    public int getIDType() {
         return IDType;
     }
 
-    public void setIDType(String IDType) {
+    public void setIDType(int IDType) {
         this.IDType = IDType;
     }
 
-    public String getIDProducer() {
+    public int getIDProducer() {
         return IDProducer;
     }
 
-    public void setIDProducer(String  IDProducer) {
+    public void setIDProducer(int  IDProducer) {
         this.IDProducer = IDProducer;
     }
 }

@@ -3,7 +3,7 @@ package com.online.shopping.model;
 public class ProductType {
     private int id;
     private String nameType;
-    private String IDCategory;
+    private int IDCategory;
     private int state;
 
     public int getId() {
@@ -22,11 +22,11 @@ public class ProductType {
         this.nameType = nameType;
     }
 
-    public String getIDCategory() {
+    public int getIDCategory() {
         return IDCategory;
     }
 
-    public void setIDCategory(String IDCategory) {
+    public void setIDCategory(int IDCategory) {
         this.IDCategory = IDCategory;
     }
 

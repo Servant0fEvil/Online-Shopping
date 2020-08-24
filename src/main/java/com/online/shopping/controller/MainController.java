@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -38,10 +40,10 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = "dang-ky",method = RequestMethod.POST)
-    public ModelAndView regProcess(HttpServletRequest request,HttpServletResponse response){
+    @RequestMapping(value = "dang-ky",method = RequestMethod.POST,produces="application/json;charset=UTF-8")
+    public ModelAndView regProcess(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
         ModelAndView model = null;
-
+request.setCharacterEncoding("utf-8");
         String username = request.getParameter("name");
         String password = request.getParameter("pw");
         String password2 = request.getParameter("pw2");
@@ -50,7 +52,7 @@ public class MainController {
         String email = request.getParameter("email");
         String adress = request.getParameter("address");
 
-
+        System.out.println(new String(fullname.getBytes(StandardCharsets.ISO_8859_1),"utf-8"));
         if( (password.equals(password2) ==  true) && phone.length() == 10 ){
             if(memberService.validate(new Member(username,password)) == null){
                 memberService.addMember(new Member(username,password,fullname,adress,phone,email,1,"",new Date(),new Date(),new Date(),1));
