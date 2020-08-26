@@ -22,7 +22,6 @@ public class ProductRowMapper implements RowMapper<Product> {
         product.setQuantity(rs.getInt("SoLuong"));
         product.setImage(rs.getString("Anh"));
         product.setDetail(rs.getString("MoTaSanPham"));
-        product.setDetail(rs.getString("MoTaSanPham"));
         product.setState(rs.getInt("TrangThai"));
         return product;
     }

@@ -5,6 +5,13 @@ public class ProductCategory {
     private String nameCat;
     private int state;
 
+    public ProductCategory() {
+
+    }
+    public ProductCategory(String nameCat, int state) {
+        this.nameCat = nameCat;
+        this.state = state;
+    }
     public int getId() {
         return id;
     }

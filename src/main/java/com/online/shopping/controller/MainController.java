@@ -1,9 +1,7 @@
 package com.online.shopping.controller;
 
-import com.online.shopping.model.Admin;
-import com.online.shopping.model.Member;
-import com.online.shopping.service.AdminService;
-import com.online.shopping.service.MemberService;
+import com.online.shopping.model.*;
+import com.online.shopping.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +23,15 @@ public class MainController {
 
     @Autowired
     MemberService memberService;
-    
+
+    @Autowired
+    ProducerService producerService;
 
     @RequestMapping("trang-chu")
     public ModelAndView index() {
         ModelAndView model = new ModelAndView("/KhachHang/TrangChu");
         model.addObject("pageTitle", "Trang chủ");
+        
         return model;
     }
 
@@ -44,7 +45,7 @@ public class MainController {
     @RequestMapping(value = "dang-ky",method = RequestMethod.POST,produces="application/json;charset=UTF-8")
     public ModelAndView regProcess(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
         ModelAndView model = null;
-request.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
         String username = request.getParameter("name");
         String password = request.getParameter("pw");
         String password2 = request.getParameter("pw2");
@@ -53,8 +54,7 @@ request.setCharacterEncoding("utf-8");
         String email = request.getParameter("email");
         String adress = request.getParameter("address");
 
-        System.out.println(fullname);
-        if( (password.equals(password2) ==  true) && phone.length() == 10 ){
+        if( (password.equals(password2)) && phone.length() == 10 ){
             if(memberService.validate(new Member(username,password)) == null){
                 memberService.addMember(new Member(username,password,fullname,adress,phone,email,1,"",new Date(),new Date(),new Date(),1));
                 model = new ModelAndView("KhachHang/DangNhap");

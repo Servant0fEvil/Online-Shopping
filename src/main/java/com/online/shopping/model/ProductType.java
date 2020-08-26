@@ -6,6 +6,16 @@ public class ProductType {
     private int IDCategory;
     private int state;
 
+    public ProductType() {
+
+    }
+
+    public ProductType(String nameType, int IDCategory, int state) {
+        this.nameType = nameType;
+        this.IDCategory = IDCategory;
+        this.state = state;
+    }
+
     public int getId() {
         return id;
     }

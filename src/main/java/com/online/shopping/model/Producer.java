@@ -5,7 +5,17 @@ public class Producer {
     private String name;
     private String address;
     private String phone;
-    private String state;
+    private int state;
+
+    public Producer() {
+    }
+
+    public Producer(String name, String address, String phone, int state) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.state = state;
+    }
 
     public int getId() {
         return id;
@@ -39,11 +49,11 @@ public class Producer {
         this.phone = phone;
     }
 
-    public String getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(int state) {
         this.state = state;
     }
 }

@@ -70,7 +70,7 @@ public class AdminDAOimpl implements AdminDAO {
                 "GioiTinh = ?,Avatar = ?,DienThoai = ?,Email = ?,NgaySinh = ? where ID_admin = ?";
 
         return jdbcTemplate.update(sql, new Object[]{Admin.getUserName(), Admin.getPassWord(), Admin.getAddress(), Admin.getSex(),
-                Admin.getAvatar(), Admin.getPhone(), Admin.getEmail(), Admin, Admin.getBirthday(), Admin.getId()});
+                Admin.getAvatar(), Admin.getPhone(), Admin.getEmail(), Admin.getBirthday(), Admin.getId()});
     }
 
     @Transactional

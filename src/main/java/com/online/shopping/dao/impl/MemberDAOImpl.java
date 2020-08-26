@@ -22,9 +22,7 @@ public class MemberDAOImpl implements MemberDAO {
     public Member getMember(int id) {
         String sql = "select * from thanhvien where ID_thanhvien = ?";
 
-        Member member = jdbcTemplate.queryForObject(sql, new Object[]{id}, new MemberRowMapper());
-
-        return member;
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, new MemberRowMapper());
     }
 
     @Transactional

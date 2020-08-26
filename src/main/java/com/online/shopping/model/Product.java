@@ -14,6 +14,22 @@ public class Product {
     private String detail;
     private int state;
 
+    public Product() {
+
+    }
+
+    public Product(int IDType, String name, double cost, int IDProducer, Date importDate, int quantity, String image, String detail, int state) {
+        this.IDType = IDType;
+        this.name = name;
+        this.cost = cost;
+        this.IDProducer = IDProducer;
+        this.importDate = importDate;
+        this.quantity = quantity;
+        this.image = image;
+        this.detail = detail;
+        this.state = state;
+    }
+
     public int getId() {
         return id;
     }
