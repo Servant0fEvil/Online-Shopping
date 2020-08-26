@@ -8,17 +8,21 @@ import com.online.shopping.rowmapper.AdminRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+@Component
 public class AdminDAOimpl implements AdminDAO {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    @Override
+    @Transactional
     public Admin getAdmin(int id) {
         String sql = "select * from admin where ID_admin = ?";
 
@@ -27,7 +31,7 @@ public class AdminDAOimpl implements AdminDAO {
         return admin;
     }
 
-    @Override
+    @Transactional
     public List<Admin> getAllAdmin() {
         String sql = "select * from admin";
 
@@ -36,11 +40,11 @@ public class AdminDAOimpl implements AdminDAO {
         return admins;
     }
 
-    @Override
+    @Transactional
     public int addAdmin(Admin admin) {
         SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate);
         insert.withTableName("admin").usingGeneratedKeyColumns("ID_admin");
-        Map<String, Object> parameters = new HashMap<>(13);
+        Map<String, Object> parameters = new HashMap<>(12);
         parameters.put("TaiKhoan", admin.getUserName());
         parameters.put("MatKhau", admin.getPassWord());
         parameters.put("Loai",admin.getType());
@@ -53,14 +57,14 @@ public class AdminDAOimpl implements AdminDAO {
         parameters.put("NgaySinh", admin.getBirthday());
         parameters.put("NgayDangKy", admin.getFirstReg().getTime());
         parameters.put("HoatDongCuoi", admin.getLastLogin().getTime());
-        parameters.put("TrangThai", admin.getStatus());
+
 
         Number insertId = insert.executeAndReturnKey(parameters);
 
         return insertId.intValue();
     }
 
-    @Override
+    @Transactional
     public int updateAdmin(Admin Admin) {
         String sql = "update admin set TaiKhoan = ?,MatKhau = ?,HoVaTen = ?,DiaChi = ?," +
                 "GioiTinh = ?,Avatar = ?,DienThoai = ?,Email = ?,NgaySinh = ? where ID_admin = ?";
@@ -69,12 +73,12 @@ public class AdminDAOimpl implements AdminDAO {
                 Admin.getAvatar(), Admin.getPhone(), Admin.getEmail(), Admin, Admin.getBirthday(), Admin.getId()});
     }
 
-    @Override
+    @Transactional
     public int deleteAdmin(int id) {
         return jdbcTemplate.update("delete from admin where ID_admin = ?", id);
     }
 
-    @Override
+    @Transactional
     public Admin validate(Admin Admin) {
         String sql = "select * from admin where TaiKhoan='" + Admin.getUserName() + "' and MatKhau='" + Admin.getPassWord()+ "'";
         List<Admin> users = jdbcTemplate.query(sql, new AdminRowMapper());

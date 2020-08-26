@@ -1,10 +1,11 @@
 package com.online.shopping.controller;
 
+import com.online.shopping.model.Admin;
 import com.online.shopping.model.Member;
+import com.online.shopping.service.AdminService;
 import com.online.shopping.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,8 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
+
 import java.util.Date;
 
 /**
@@ -25,6 +25,7 @@ public class MainController {
 
     @Autowired
     MemberService memberService;
+    
 
     @RequestMapping("trang-chu")
     public ModelAndView index() {
@@ -52,7 +53,7 @@ request.setCharacterEncoding("utf-8");
         String email = request.getParameter("email");
         String adress = request.getParameter("address");
 
-        System.out.println(new String(fullname.getBytes(StandardCharsets.ISO_8859_1),"utf-8"));
+        System.out.println(fullname);
         if( (password.equals(password2) ==  true) && phone.length() == 10 ){
             if(memberService.validate(new Member(username,password)) == null){
                 memberService.addMember(new Member(username,password,fullname,adress,phone,email,1,"",new Date(),new Date(),new Date(),1));

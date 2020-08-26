@@ -13,7 +13,7 @@ public class AdminRowMapper implements RowMapper<Admin> {
     @Override
     public Admin mapRow(ResultSet rs, int i) throws SQLException {
         Admin Admin = new Admin();
-        Admin.setId(rs.getInt("ID_thanhvien"));
+        Admin.setId(rs.getInt("ID_admin"));
         Admin.setUserName(rs.getString("TaiKhoan"));
         Admin.setPassWord(rs.getString("MatKhau"));
         Admin.setType(rs.getInt("Loai"));
@@ -37,7 +37,6 @@ public class AdminRowMapper implements RowMapper<Admin> {
 
         Admin.setFirstReg(new Date(rs.getLong("NgayDangKy")));
         Admin.setLastLogin(new Date(rs.getLong("HoatDongCuoi")));
-        Admin.setStatus(rs.getInt("TrangThai"));
         return Admin;
     }
 }

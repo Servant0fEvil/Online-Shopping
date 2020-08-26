@@ -16,10 +16,12 @@ public class Admin {
     private Date birthday;
     private Date firstReg;
     private Date lastLogin;
-    private int status;
 
-    public Admin(int id, String userName, String passWord, int type, String name, String address, int sex, String avatar, String phone, String email, Date birthday, Date firstReg, Date lastLogin, int status) {
-        this.id = id;
+    public Admin() {
+
+    }
+
+    public Admin(String userName, String passWord, int type, String name, String address, int sex, String avatar, String phone, String email, Date birthday, Date firstReg, Date lastLogin) {
         this.userName = userName;
         this.passWord = passWord;
         this.type = type;
@@ -32,11 +34,6 @@ public class Admin {
         this.birthday = birthday;
         this.firstReg = firstReg;
         this.lastLogin = lastLogin;
-        this.status = status;
-    }
-
-    public Admin() {
-
     }
 
     public int getId() {
@@ -143,11 +140,4 @@ public class Admin {
         this.lastLogin = lastLogin;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 }
