@@ -4,6 +4,7 @@ import com.online.shopping.model.*;
 import com.online.shopping.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author ServantOfEvil
@@ -25,13 +27,20 @@ public class MainController {
     MemberService memberService;
 
     @Autowired
+    ProductService productService;
+
+    @Autowired
     ProducerService producerService;
 
     @RequestMapping("trang-chu")
     public ModelAndView index() {
         ModelAndView model = new ModelAndView("/KhachHang/TrangChu");
         model.addObject("pageTitle", "Trang chủ");
-        
+
+
+        List<Product> productList = productService.getAllProduct();
+        model.addObject("products",productList);
+
         return model;
     }
 
@@ -95,7 +104,7 @@ public class MainController {
 
 
 
-    @RequestMapping("san-pham-noi-bat")
+    @RequestMapping("/san-pham-noi-bat")
     public ModelAndView sanPhamNoiBat() {
 
         return new ModelAndView("KhachHang/SanPhamNoiBat");
@@ -106,10 +115,19 @@ public class MainController {
         return new ModelAndView("KhachHang/DonHang");
     }
 
-    @RequestMapping("chi-tiet-san-pham")
-    public ModelAndView xemChiTietSanPham() {
+    @RequestMapping("/chi-tiet-san-pham/{id}")
+    public ModelAndView xemChiTietSanPham(@PathVariable int id) {
+        ModelAndView model = new ModelAndView("KhachHang/XemChiTietSP");
 
-        return new ModelAndView("KhachHang/XemChiTietSP");
+//        model.addObject("id",id);
+        Product product = productService.getProduct(id);
+
+        model.addObject("product",product);
+
+        model.addObject("producer",producerService.getProducer(product.getIDProducer()));
+
+
+        return model;
     }
 
     @RequestMapping("gio-hang")

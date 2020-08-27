@@ -1,7 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@include file="/WEB-INF/views/header.jsp" %>
-<%@include file="/WEB-INF/views/menubar.jsp"%>
+<%@include file="/WEB-INF/views/menubar.jsp" %>
 <div class="container">
 
 
@@ -12,7 +13,6 @@
     </p>
     <!-- END of BREADCRUMBS -->
 
-
     <!-- START of INNER-CONTAINER -->
     <div class="inner-container clearfix">
 
@@ -21,49 +21,41 @@
                 <div class="large-image">
                     <a class="cloud-zoom" id='zoom1' href="images/product-gallery/very-large-image.jpg"
                        rel="adjustX: 10, adjustY:-4, softFocus:true">
-                        <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/354/932/products/tivi-sony-kd-55x8000g-2-org.jpg?v=1581063774807"
+                        <img src="/images/products/${product.image}"
                              alt=""/>
                     </a>
                 </div>
+
                 <ul class="clearfix">
-                    <li><a class="thumbnail cloud-zoom-gallery" href='images/product-gallery/very-large-image.jpg'
-                           title='Thumbnail 1'
-                           rel="useZoom: 'zoom1', smallImage: 'images/product-gallery/large-image.jpg' ">
-                        <img src="https://bizweb.dktcdn.net/thumb/medium/100/354/932/products/tivi-sony-kd-55x8000g-8-1-org.jpg?v=1581063806433"
-                             alt=""/>
-                    </a>
-                    </li>
-                    <li><a class="thumbnail cloud-zoom-gallery" href="images/product-gallery/very-large-image2.jpg"
-                           title='Thumbnail 2'
-                           rel="useZoom: 'zoom1', smallImage: 'images/product-gallery/large-image2.jpg' ">
-                        <img src="https://bizweb.dktcdn.net/thumb/medium/100/354/932/products/tivi-sony-kd-55x8000g-9-1-org.jpg?v=1581063820980"
-                             alt=""/>
-                    </a>
-                    </li>
-                    <li><a class="thumbnail cloud-zoom-gallery" href="images/product-gallery/very-large-image3.jpg"
-                           title='Thumbnail 3'
-                           rel="useZoom: 'zoom1', smallImage: 'images/product-gallery/large-image3.jpg' ">
-                        <img src="https://bizweb.dktcdn.net/thumb/medium/100/354/932/products/tivi-sony-kd-55x8000g-10-org.jpg?v=1581063842580"
-                             alt=""/>
-                    </a>
-                    </li>
-                    <li><a class="thumbnail last cloud-zoom-gallery" href="images/product-gallery/very-large-image4.jpg"
-                           title='Thumbnail 4'
-                           rel="useZoom: 'zoom1', smallImage: 'images/product-gallery/large-image4.jpg' ">
-                        <img src="https://bizweb.dktcdn.net/thumb/medium/100/354/932/products/tivi-sony-kd-55x8000g-11-1-org.jpg?v=1581063856747"
-                             alt=""/>
-                    </a>
-                    </li>
+                    <c:forEach var="i" begin="1" end="4">
+                        <li><a class="thumbnail cloud-zoom-gallery"
+                               title='Thumbnail 1'
+                               rel="useZoom: 'zoom1', smallImage: 'images/product-gallery/large-image.jpg' ">
+                            <img src="/images/products/product-${i}.jpg"
+                                 alt=""/>
+                        </a>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div><!-- end of .product-gallery -->
 
             <div class="product-detail">
-                <h2><a href="#">Android Yivi Sony 55 inch</a></h2>
-                <cite>Nhà cung cấp: sony</cite>
+                <h2><a href="#">${product.name}</a></h2>
+                <cite>Nhà cung cấp: ${producer.name}</cite>
                 <!--                <p>Product Code: 123456</p>-->
                 <!--                <p>Reward Points: 9</p>-->
-                <p>Tình trạng:<span>Còn hàng</span></p>
-                <p class="price">Giá: 13.000.000 đ</p>
+                <p>Tình trạng:<span>
+                    <c:choose>
+                        <c:when test="${product.quantity<1}">
+                            Hết hàng
+                        </c:when>
+                        <c:when test="${product.quantity>0}">
+                            Còn hàng
+                        </c:when>
+                    </c:choose>
+                    </span>
+                </p>
+                <p class="price">Giá:${product.cost}đ </p>
 
                 <form class="options-form" method="get" action="#">
                     <fieldset>
@@ -135,20 +127,7 @@
         </ul>
         <div class="panes">
             <div class="tab-pane">
-                <p>Kiểu dáng hiện đại, sang trọng<br/>
-                    Android Tivi Sony 4K 55 inch KD-55X8000G sở hữu thiết kế hiện đại cùng tông màu đen lịch lãm, mang
-                    đến phong cách sống sang trọng cho không gian được bố trí.<br/>
-
-                    Kích thước tivi 55 inch thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách,
-                    phòng họp,... Ngoài ra với chân đế dạng chữ V kim loại chắc chắn, giúp tivi đứng vững trên nhiều bề
-                    mặt khác nhau.<br/>
-                    Đặc điểm nổi bật<br/>
-
-                    Hình ảnh hiển thị sắc nét với độ phân giải 4K .<br/>
-                    Khả năng nâng cấp chất lượng hình ảnh độ phân giải thấp lên gần chuẩn 4K với công nghệ 4K X-Reality
-                    PRO.<br/>
-                    Hệ điều hành Android 8.0 hiện đại, thiết kế remote thông minh và Google Assistant tiện điều khiển,
-                    tìm kiếm bằng giọng nói tiếng Việt.<br/>
+                <p>${product.detail}
                 </p>
             </div>
         </div><!-- end of .container -->
