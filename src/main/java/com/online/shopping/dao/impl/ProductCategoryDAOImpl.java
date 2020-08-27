@@ -16,7 +16,7 @@ import java.util.Map;
 
 
 @Component
-public class ProductCategoryDAOimpl implements ProductCategoryDAO {
+public class ProductCategoryDAOImpl implements ProductCategoryDAO {
 
     @Autowired
     JdbcTemplate jdbcTemplate;

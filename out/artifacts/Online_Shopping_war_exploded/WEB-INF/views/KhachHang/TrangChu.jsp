@@ -9,21 +9,21 @@
     <div id="slider">
         <div class="slides" id="slides">
             <div class="slide">
-                <a href="#"><img src="/images/slider/slide4.jpg" alt="comfortable sofa"/></a>
+                <a href="#"><img src="/image/slider/slide4.jpg" alt="comfortable sofa"/></a>
                 <div class="caption">
                     <!--                                    		<a href="product.html" class="purchase-btn">&nbsp;</a>-->
                     <p>Sofa trắng - Số lượng có hạn <span class="price">đ2.699.000</span></p>
                 </div><!-- end of .caption -->
             </div>
             <div class="slide">
-                <a href="#"><img src="/images/slider/slide3.jpg" alt="cool camera"/></a>
+                <a href="#"><img src="/image/slider/slide3.jpg" alt="cool camera"/></a>
                 <div class="caption">
                     <!--                                    		<a href="product.html" class="purchase-btn">&nbsp;</a>-->
                     <p>Máy ảnh bán chạy nhất- Số lượng có hạn <span class="price">đ1.799.000</span></p>
                 </div><!-- end of .caption -->
             </div>
             <div class="slide">
-                <a href="#"><img src="/images/slider/slide1.jpg" alt="diamonds on the soles of her shoes"/></a>
+                <a href="#"><img src="/image/slider/slide1.jpg" alt="diamonds on the soles of her shoes"/></a>
                 <div class="caption">
 
                     <p>Giày đính đá- Số lượng có hạn <span class="price">đ179.000</span></p>
@@ -31,7 +31,7 @@
             </div><!-- end of .slide -->
 
             <div class="slide">
-                <a href="#"><img src="/images/slider/slide2.jpg" alt="suit for the soles of his body"/></a>
+                <a href="#"><img src="/image/slider/slide2.jpg" alt="suit for the soles of his body"/></a>
                 <div class="caption">
                     <!--                                    		<a href="product.html" class="purchase-btn">&nbsp;</a>-->
                     <p>Lorem Suit - Số lượng có hạn <span class="price">đ1.999.000</span></p>
@@ -52,16 +52,16 @@
     <div class="product-listing">
         <h3><span>Sản phẩm hôm nay</span></h3>
         <ul class="clearfix">
-            <c:forEach var="a" items="${products}">
+            <c:forEach  var="product" begin="1" end="${products.size()-3}" items="${products}">
                 <li class="product last">
-                    <a href="#" class="thumb"><img
-                            src="/images/products/${a.image}"
+                    <a href="<c:url value = '/chi-tiet-san-pham/${product.id}'/>" class="thumb"><img
+                            src="/image/products/${product.image}"
                             alt=""/></a>
                     <div class="data">
-                        <a href="#" class="title">${a.name}</a>
+                        <a href="<c:url value = '/chi-tiet-san-pham/${product.id}'/>" class="title">${product.name}</a>
                         <div class="clearfix info">
-                            <a href="#" class="add-to-cart"><i class="fa fa-cart-plus"></i></a>
-                            <span class="price-text">đ<span>${a.cost}</span></span>
+                            <a href="/gio-hang" class="add-to-cart"><i class="fa fa-cart-plus"></i></a>
+                            <span class="price-text">đ<span>${product.cost}</span></span>
                         </div>
                     </div>
                 </li>
@@ -76,15 +76,15 @@
         <h3><span>Mới</span></h3>
 
             <ul class="clearfix">
-            <c:forEach var="a" items="${products}">
-                <li class="product last">
+                <c:forEach  var="a" begin="${products.size()-4}" end="${products.size()}" items="${products}">
+                    <li class="product last">
                     <a href="<c:url value = '/chi-tiet-san-pham/${a.id}'/>" class="thumb"><img
-                            src="/images/products/${a.image}"
+                            src="/image/products/${a.image}"
                             alt=""/></a>
                     <div class="data">
-                        <a href="#" class="title">${a.name}</a>
+                        <a href="<c:url value = '/chi-tiet-san-pham/${a.id}'/>" class="title">${a.name}</a>
                         <div class="clearfix info">
-                            <a href="#" class="add-to-cart"><i class="fa fa-cart-plus"></i></a>
+                            <a href="/gio-hang" class="add-to-cart"><i class="fa fa-cart-plus"></i></a>
                             <span class="price-text">đ<span>${a.cost}</span></span>
                         </div>
                     </div>

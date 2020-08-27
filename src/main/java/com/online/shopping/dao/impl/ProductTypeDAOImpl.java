@@ -6,6 +6,7 @@ import com.online.shopping.rowmapper.ProductTypeRowMapper;
 import com.online.shopping.rowmapper.ProductTypeRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import java.util.Map;
 
 
 @Component
-public class ProductTypeDAOimpl implements ProductTypeDAO {
+public class ProductTypeDAOImpl implements ProductTypeDAO {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -58,5 +59,14 @@ public class ProductTypeDAOimpl implements ProductTypeDAO {
     @Transactional
     public int deleteProductType(int id) {
         return 0;
+    }
+
+    @Override
+    public List<ProductType> getTypebyCat(int id) {
+        String sql = "select * from loaihang where ID_nganhhang = ?";
+
+        List<ProductType> productTypes = jdbcTemplate.query(sql, new Object[]{id},new ProductTypeRowMapper());
+
+        return productTypes;
     }
 }

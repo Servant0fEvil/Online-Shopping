@@ -15,7 +15,7 @@ import java.util.Map;
 
 
 @Component
-public class ProductDAOimpl implements ProductDAO {
+public class ProductDAOImpl implements ProductDAO {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -70,5 +70,26 @@ public class ProductDAOimpl implements ProductDAO {
     @Transactional
     public int deleteProduct(int id) {
         return jdbcTemplate.update("delete from sanpham where ID_sanpham = ?", id);
+    }
+
+    @Transactional
+    public List<Product> getProductbyCat(int id) {
+        String sql = "SELECT sanpham.ID_sanpham,sanpham.ID_loaihang,sanpham.TenSanPham,sanpham.GiaTien" +
+                ",sanpham.ID_nhacungcap,sanpham.NgayNhap,sanpham.SoLuong,sanpham.Anh," +
+                "sanpham.MoTaSanPham,sanpham.TrangThai FROM sanpham,loaihang " +
+                "WHERE sanpham.ID_loaihang = loaihang.ID_loaihang AND loaihang.ID_nganhhang = ?";
+
+        List<Product> products = jdbcTemplate.query(sql,new Object[]{id},new ProductRowMapper());
+
+        return products;
+    }
+
+    @Override
+    public List<Product> getProductbyType(int id) {
+        String sql = "select * from sanpham where ID_loaihang = ?";
+
+        List<Product> products = jdbcTemplate.query(sql,new Object[]{id},new ProductRowMapper());
+
+        return products;
     }
 }

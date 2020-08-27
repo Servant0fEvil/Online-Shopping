@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -12,7 +13,7 @@
     <!-- MAIN NAVIGATION -->
 
     <ul id="navigation" class="clearfix left">
-        <li class="home"><a href="/trang-chu"><img src="/images/home.png" alt=""/>Home</a></li>
+        <li class="home"><a href="/trang-chu"><img src="/image/home.png" alt=""/>Home</a></li>
         <li><a href="/san-pham-noi-bat">Sản phẩm nổi bật</a></li>
 
         <li><a href="/tin-tuc">Tin tức</a></li>
@@ -21,12 +22,19 @@
         <!--            		<li><a href="contact.html">LIÊN HỆ</a></li>-->
         <li><a href="#">Ngành hàng</a>
             <ul>
-                <li><a href="/nganh-hang">Thiết bị điện tử</a></li>
-                <li><a href="#">Giày</a></li>
-                <li><a href="#">Đồ gia dụng</a></li>
-                <li><a href="#">Quần áo</a></li>
-                <li><a href="#">Sách</a></li>
-                <li><a href="#">ô tô- xe máy</a></li>
+<%--                <li><a href="/nganh-hang">Thiết bị điện tử</a></li>--%>
+<%--                <li><a href="#">Giày</a></li>--%>
+<%--                <li><a href="#">Đồ gia dụng</a></li>--%>
+<%--                <li><a href="#">Quần áo</a></li>--%>
+<%--                <li><a href="#">Sách</a></li>--%>
+<%--                <li><a href="#">ô tô- xe máy</a></li>--%>
+                    <c:forEach var = "b" items = "${category}" >
+                        <li>
+                            <a href="<c:url value = '/nganh-hang/${b.nameCat}/${b.id}'/>">
+                                ${b.nameCat}
+                            </a>
+                        </li>
+                    </c:forEach>
             </ul>
         </li>
         <li><a href="/tra-cuu-don-hang">Đơn hàng</a></li>

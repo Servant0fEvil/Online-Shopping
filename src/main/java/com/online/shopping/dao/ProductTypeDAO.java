@@ -10,4 +10,5 @@ public interface ProductTypeDAO {
     public int addProductType(ProductType ProductType);
     public int updateProductType(ProductType ProductType);
     public int deleteProductType(int id);
+    public List<ProductType> getTypebyCat(int id);
 }

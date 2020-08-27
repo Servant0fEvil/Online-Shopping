@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class ShoppingCart {
     private int id;
-    private Member member;
-    private Product product;
+    private int idMember;
+    private int idProduct;
     private int quantity;
     private Date orderDate;
 
@@ -17,20 +17,20 @@ public class ShoppingCart {
         this.id = id;
     }
 
-    public Member getMember() {
-        return member;
+    public int getIdMember() {
+        return idMember;
     }
 
-    public void setMember(Member member) {
-        this.member = member;
+    public void setIdMember(int idMember) {
+        this.idMember = idMember;
     }
 
-    public Product getProduct() {
-        return product;
+    public int getIdProduct() {
+        return idProduct;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
     }
 
     public int getQuantity() {

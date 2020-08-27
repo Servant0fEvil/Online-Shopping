@@ -37,4 +37,9 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public int deleteProductType(int id) {
         return productTypeDAO.deleteProductType(id);
     }
+
+    @Override
+    public List<ProductType> getTypebyCat(int id) {
+        return productTypeDAO.getTypebyCat(id);
+    }
 }

@@ -17,7 +17,7 @@ import java.util.Map;
 
 
 @Component
-public class AdminDAOimpl implements AdminDAO {
+public class AdminDAOImpl implements AdminDAO {
 
     @Autowired
     JdbcTemplate jdbcTemplate;

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class ProducerDAOimpl implements ProducerDAO {
+public class ProducerDAOImpl implements ProducerDAO {
 
     @Autowired
     JdbcTemplate jdbcTemplate;

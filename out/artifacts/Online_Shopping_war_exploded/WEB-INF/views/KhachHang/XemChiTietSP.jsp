@@ -5,23 +5,15 @@
 <%@include file="/WEB-INF/views/menubar.jsp" %>
 <div class="container">
 
-
-    <!-- START of BREADCRUMBS -->
-    <p id="breadcrumbs">
-        <a href="/nganh-hang">Thiết bị điện tử</a>
-        <span class="active">Ti vi</span>
-    </p>
-    <!-- END of BREADCRUMBS -->
-
     <!-- START of INNER-CONTAINER -->
     <div class="inner-container clearfix">
 
         <div id="product" class="clearfix">
             <div class="product-gallery">
                 <div class="large-image">
-                    <a class="cloud-zoom" id='zoom1' href="images/product-gallery/very-large-image.jpg"
+                    <a class="cloud-zoom" id='zoom1'
                        rel="adjustX: 10, adjustY:-4, softFocus:true">
-                        <img src="/images/products/${product.image}"
+                        <img src="/image/products/${product.image}"
                              alt=""/>
                     </a>
                 </div>
@@ -30,8 +22,8 @@
                     <c:forEach var="i" begin="1" end="4">
                         <li><a class="thumbnail cloud-zoom-gallery"
                                title='Thumbnail 1'
-                               rel="useZoom: 'zoom1', smallImage: 'images/product-gallery/large-image.jpg' ">
-                            <img src="/images/products/product-${i}.jpg"
+                               rel="useZoom: 'zoom1', smallImage: ">
+                            <img src="/image/products/${product.id}-${i}.jpg"
                                  alt=""/>
                         </a>
                         </li>
@@ -103,16 +95,17 @@
         </div><!-- end of #contents -->
 
         <div id="sidebar">
-            <h3><span>CATEGORIES</span></h3>
-            <ul>
-                <li><a href="/chi-tiet-san-pham">Ti vi</a></li>
-                <li><a href="#">Tủ lạnh</a></li>
-                <li><a href="#">Máy tính</a></li>
-                <li><a href="#">Điều hòa</a></li>
-                <li><a href="#">Điện thoại</a></li>
-                <li><a href="#">Đồng hồ</a></li>
-                <li><a href="#"></a></li>
-            </ul>
+            <!--                    		<h3><span>CATEGORIES</span></h3>-->
+            <!--                            <ul>-->
+            <!--                            		<li><a href="#">Bags</a></li>-->
+            <!--                            		<li><a href="#">Shoes</a></li>-->
+            <!--                            		<li><a href="#">Lorems</a></li>-->
+            <!--                            		<li><a href="#">Ipsums</a></li>-->
+            <!--                            		<li><a href="#">Dresses</a></li>-->
+            <!--                            		<li><a href="#">Jewellery</a></li>-->
+            <!--                            		<li><a href="#">Furniture</a></li>-->
+            <!--                            </ul>-->
+            <img src="https://pic.pikbest.com/01/25/28/06v888piCcDW.jpg-0.jpg!bw340" alt=""/>
         </div><!-- end of #sidebar -->
 
     </div>

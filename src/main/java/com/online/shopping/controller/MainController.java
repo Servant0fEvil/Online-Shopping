@@ -2,6 +2,7 @@ package com.online.shopping.controller;
 
 import com.online.shopping.model.*;
 import com.online.shopping.service.*;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.jms.Session;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
@@ -32,14 +35,20 @@ public class MainController {
     @Autowired
     ProducerService producerService;
 
+    @Autowired
+    ProductCatService productCatService;
+
+    @Autowired
+    ProductTypeService productTypeService;
+
     @RequestMapping("trang-chu")
     public ModelAndView index() {
         ModelAndView model = new ModelAndView("/KhachHang/TrangChu");
         model.addObject("pageTitle", "Trang chủ");
 
+        model.addObject("products",productService.getAllProduct());
 
-        List<Product> productList = productService.getAllProduct();
-        model.addObject("products",productList);
+        model.addObject("category",productCatService.getAllProductCategory());
 
         return model;
     }
@@ -106,13 +115,21 @@ public class MainController {
 
     @RequestMapping("/san-pham-noi-bat")
     public ModelAndView sanPhamNoiBat() {
+        ModelAndView model = new ModelAndView("KhachHang/SanPhamNoiBat");
 
-        return new ModelAndView("KhachHang/SanPhamNoiBat");
+        model.addObject("category",productCatService.getAllProductCategory());
+
+        model.addObject("products",productService.getAllProduct());
+        return model;
     }
 
     @RequestMapping("tra-cuu-don-hang")
     public ModelAndView traCuuDonHang() {
-        return new ModelAndView("KhachHang/DonHang");
+        ModelAndView model = new ModelAndView("KhachHang/DonHang");
+
+        model.addObject("category",productCatService.getAllProductCategory());
+
+        return model;
     }
 
     @RequestMapping("/chi-tiet-san-pham/{id}")
@@ -122,10 +139,11 @@ public class MainController {
 //        model.addObject("id",id);
         Product product = productService.getProduct(id);
 
+        model.addObject("category",productCatService.getAllProductCategory());
+
         model.addObject("product",product);
 
         model.addObject("producer",producerService.getProducer(product.getIDProducer()));
-
 
         return model;
     }
@@ -133,30 +151,58 @@ public class MainController {
     @RequestMapping("gio-hang")
     public ModelAndView xemGioHang() {
 
-        return new ModelAndView("KhachHang/XemGioHang");
+        ModelAndView model = new ModelAndView("KhachHang/XemGioHang");
+
+        model.addObject("category",productCatService.getAllProductCategory());
+
+        return model;
     }
 
-    @RequestMapping("loai-hang")
-    public ModelAndView xemTheoLoaiHang() {
+    @RequestMapping("loai-hang/{name}/{id}")
+    public ModelAndView xemTheoLoaiHang(@PathVariable int id,@PathVariable String name) {
 
-        return new ModelAndView("KhachHang/XemTheoLoaiHang");
+        ModelAndView model = new ModelAndView("KhachHang/XemTheoLoaiHang");
+
+        model.addObject("type",productTypeService.getAllProductType());
+
+        model.addObject("category",productCatService.getAllProductCategory());
+
+        model.addObject("products",productService.getProductbyType(id));
+
+        model.addObject("nameType",name);
+
+        return model;
     }
 
-    @RequestMapping("nganh-hang")
-    public ModelAndView xemTheoNganhHang() {
+    @RequestMapping("nganh-hang/{name}/{id}")
+    public ModelAndView xemTheoNganhHang(@PathVariable int id,@PathVariable String name) {
+        ModelAndView model = new ModelAndView("KhachHang/XemTheoNganhHang");
 
-        return new ModelAndView("KhachHang/XemTheoNganhHang");
+        model.addObject("products",productService.getProductbyCat(id));
+
+        model.addObject("type",productTypeService.getTypebyCat(id));
+
+        model.addObject("category",productCatService.getAllProductCategory());
+
+        model.addObject("nameCat",name);
+        return model;
     }
 
     @RequestMapping("tin-tuc")
     public ModelAndView xemTinTuc() {
+        ModelAndView model = new ModelAndView("KhachHang/XemTinTuc");
 
-        return new ModelAndView("KhachHang/XemTinTuc");
+        model.addObject("category",productCatService.getAllProductCategory());
+
+        return model;
     }
 
     @RequestMapping("chi-tiet-tin")
     public ModelAndView xemTinTucChiTiet() {
+        ModelAndView model =  new ModelAndView("KhachHang/XemTinTucChiTiet");
 
-        return new ModelAndView("KhachHang/XemTinTucChiTiet");
+        model.addObject("category",productCatService.getAllProductCategory());
+
+        return model;
     }
 }
