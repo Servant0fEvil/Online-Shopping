@@ -27,13 +27,9 @@ public class ShoppingCart {
     ProductCatService productCatService;
 
     @RequestMapping("gio-hang")
-    public ModelAndView xemGioHang(HttpSession session) {
+    public ModelAndView xemGioHang() {
 
         ModelAndView model = new ModelAndView("KhachHang/XemGioHang");
-
-        Cart cart = new Cart();
-
-        List<Cart> list = (List<Cart>) session.getAttribute("cart");
 
         model.addObject("category",productCatService.getAllProductCategory());
 
@@ -43,7 +39,7 @@ public class ShoppingCart {
     @RequestMapping("gio-hang/them-hang/{id}")
     public ModelAndView addCart(@PathVariable int id, HttpSession session) {
 
-        ModelAndView model = new ModelAndView("redirect:/gio-hang");
+        ModelAndView model = new ModelAndView("KhachHang/XemGioHang");
 
         model.addObject("category",productCatService.getAllProductCategory());
 

@@ -96,6 +96,7 @@ public class MainController {
 
             if(member1 != null){
                 model = new ModelAndView("KhachHang/TrangChu");
+                model.addObject("products",productService.getAllProduct());
             } else {
                 model = new ModelAndView("KhachHang/DangNhap");
                 model.addObject("message", "Username or Password is wrong!!");

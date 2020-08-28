@@ -32,13 +32,11 @@
                         <td class="red">${item.price.longValue()*item.quantity}</td>
                         <td>
                             <a href="<c:url value="/gio-hang/xoa-hang/${item.id}"/>" class="bottom-toolbar">Remove </a>
-                            <script type="text/javascript">
-                                function update(quantity, id) {
-                                    window.location.href = "/gio-hang/cap-nhat" + "?id=" + id + "&quantity=" + quantity;
-
-                                    return false;
-                                }
-                            </script>
+<%--                            <script type="text/javascript">--%>
+<%--                                function update(quantity, id) {--%>
+<%--                                    window.location.href = "/gio-hang/cap-nhat" + "?id=" + id + "&quantity=" + quantity;--%>
+<%--                                }--%>
+<%--                            </script>--%>
                             <a href="#" class="bottom-toolbar"
                                onclick="return update(document.getElementById('quantity_${item.id}').value,${item.id})">Update</a>
                         </td>
@@ -66,7 +64,11 @@
 
 
 </div>
-
+<script type="text/javascript">
+    function update(quantity, id) {
+        window.location.href = "/gio-hang/cap-nhat" + "?id=" + id + "&quantity=" + quantity;
+    }
+</script>
 
 <!-- end of .container -->
 <%@ include file="/WEB-INF/views/footer.jsp" %>
