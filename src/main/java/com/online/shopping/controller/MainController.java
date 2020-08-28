@@ -1,23 +1,16 @@
 package com.online.shopping.controller;
-
 import com.online.shopping.model.*;
 import com.online.shopping.service.*;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.jms.Session;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author ServantOfEvil
@@ -144,16 +137,6 @@ public class MainController {
         model.addObject("product",product);
 
         model.addObject("producer",producerService.getProducer(product.getIDProducer()));
-
-        return model;
-    }
-
-    @RequestMapping("gio-hang")
-    public ModelAndView xemGioHang() {
-
-        ModelAndView model = new ModelAndView("KhachHang/XemGioHang");
-
-        model.addObject("category",productCatService.getAllProductCategory());
 
         return model;
     }

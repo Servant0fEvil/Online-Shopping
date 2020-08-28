@@ -1,3 +1,4 @@
+<%@ page import="com.online.shopping.model.Product" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -47,7 +48,7 @@
                     </c:choose>
                     </span>
                 </p>
-                <p class="price">Giá:${product.cost}đ </p>
+                <p class="price">Giá:<%=(long)((Product)pageContext.getRequest().getAttribute("product")).getCost()%>đ </p>
 
                 <form class="options-form" method="get" action="#">
                     <fieldset>
