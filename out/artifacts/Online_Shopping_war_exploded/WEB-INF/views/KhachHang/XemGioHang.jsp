@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@include file="/WEB-INF/views/header.jsp" %>
-<%@include file="/WEB-INF/views/menubar.jsp"%>
+<%@include file="/WEB-INF/views/menubar.jsp" %>
 <div class="container">
     <!-- START of INNER-CONTAINER -->
     <div class="inner-container">
@@ -14,69 +14,41 @@
 
             <table>
                 <tr>
-                    <th>Xóa</th>
                     <th>Hình ảnh</th>
                     <th class="name-header">Tên sản phẩm</th>
-                    <th>Nhà sản xuất</th>
                     <th>Số lượng</th>
                     <th>Đơn giá</th>
                     <th>Tổng</th>
+                    <th>Action</th>
                 </tr>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td class="thumb"><img
-                            src="https://riooshop.com/wp-content/uploads/2020/04/ao-thun-nam-co-tron-xuat-khau-hollister-rtx005-4.jpg"
-                            alt=""/></td>
-                    <td class="name">Áo thun nam</td>
-                    <td><a href="#">shop1</a></td>
-
-                    <td class="qty"><input type="text" value="1"/></td>
-                    <td>đ 170.000</td>
-                    <td class="red">đ 170.000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td class="thumb"><img
-                            src="https://th-test-11.slatic.net/p/c09db9d3727f9c8fe960ff3bb730006b.jpg_720x720q80.jpg_.webp"
-                            alt=""/></td>
-                    <td class="name">Bộ dụng cụ nhà bếp</td>
-                    <td><a href="#">shop2</a></td>
-
-                    <td class="qty"><input type="text" value="1"/></td>
-                    <td>đ 310.000</td>
-                    <td class="red">đ 310.000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td class="thumb"><img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRoIu1ZuksriZwVcE1DarV6qAJuEWMn2iFwJQ&usqp=CAU"
-                            alt=""/></td>
-                    <td class="name">Cặp sách</td>
-                    <td><a href="#">shop3</a></td>
-
-                    <td class="qty"><input type="text" value="1"/></td>
-                    <td>đ 190.000</td>
-                    <td class="red">đ 190.000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td class="thumb"><img
-                            src="https://img.nhabanhang.com/sp/f/194549/giay-nam-giay-sneaker-nam-nu-giay-the-thao-hot-trend-cao-cap-tang-kem-tat-lua-nam-19.jpg"
-                            alt=""/></td>
-                    <td class="name">Giày nam</td>
-                    <td><a href="#">shopmall</a></td>
-
-                    <td class="qty"><input type="text" value="1"/></td>
-                    <td>đ 500.000</td>
-                    <td class="red">đ 500.000</td>
-                </tr>
+                <c:forEach var="item" items="${listcart}">
+                    <tr>
+                        <td class="thumb"><img
+                                src="/image/products/${item.image}"
+                                alt=""/></td>
+                        <td class="name">${item.name}</td>
+                        <td class="qty"><input type="number" id="quantity_${item.id}" value="${item.quantity}"/></td>
+                        <td>đ ${item.price}</td>
+                        <td class="red">${item.price.longValue()*item.quantity}</td>
+                        <td>
+                            <a href="<c:url value="/gio-hang/xoa-hang/${item.id}"/>" class="bottom-toolbar">Remove </a>
+<%--                            <script type="text/javascript">--%>
+<%--                                function update(quantity, id) {--%>
+<%--                                    window.location.href = "/gio-hang/cap-nhat" + "?id=" + id + "&quantity=" + quantity;--%>
+<%--                                }--%>
+<%--                            </script>--%>
+                            <a href="#" class="bottom-toolbar"
+                               onclick="return update(document.getElementById('quantity_${item.id}').value,${item.id})">Update</a>
+                        </td>
+                    </tr>
+                </c:forEach>
             </table>
 
             <div class="clearfix">
-
-
                 <div class="right-column">
-                    <p class="total">Tổng số tiền: đ 1.170.000</p>
+                    <c:if test="${total != 0}">
+                        <p class="total">Tổng số tiền: ${total} </p>
+                    </c:if>
                     <p>
                         <a class="checkout">Đặt mua</a>
                         <a class="update">Cập nhật</a>
@@ -92,5 +64,11 @@
 
 
 </div>
+<script type="text/javascript">
+    function update(quantity, id) {
+        window.location.href = "/gio-hang/cap-nhat" + "?id=" + id + "&quantity=" + quantity;
+    }
+</script>
+
 <!-- end of .container -->
 <%@ include file="/WEB-INF/views/footer.jsp" %>

@@ -1,3 +1,4 @@
+<%@ page import="com.online.shopping.model.Product" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@include file="/WEB-INF/views/header.jsp"%>
@@ -23,8 +24,8 @@
                         <div class="data">
                             <a href="<c:url value = '/chi-tiet-san-pham/${a.id}'/>" class="title">${a.name}</a>
                             <div class="clearfix info">
-                                <a href="/gio-hang" class="add-to-cart"><i class="fa fa-cart-plus"></i></a>
-                                <span class="price-text">đ<span>${a.cost}</span></span>
+                                <a href="<c:url value="/gio-hang/them-hang/${a.id}"/>" class="add-to-cart"><i class="fa fa-cart-plus"></i></a>
+                                <span class="price-text"><span><%=(long) ((Product) pageContext.getAttribute("a")).getCost()%></span>đ</span>
                             </div>
                         </div>
                     </li>

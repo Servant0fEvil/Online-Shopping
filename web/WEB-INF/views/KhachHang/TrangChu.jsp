@@ -1,3 +1,5 @@
+<%@ page import="com.online.shopping.model.Product" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -52,7 +54,7 @@
     <div class="product-listing">
         <h3><span>Sản phẩm hôm nay</span></h3>
         <ul class="clearfix">
-            <c:forEach  var="product" begin="1" end="${products.size()-3}" items="${products}">
+            <c:forEach var="product" begin="1" end="4" items="${products}">
                 <li class="product last">
                     <a href="<c:url value = '/chi-tiet-san-pham/${product.id}'/>" class="thumb"><img
                             src="/image/products/${product.image}"
@@ -60,8 +62,9 @@
                     <div class="data">
                         <a href="<c:url value = '/chi-tiet-san-pham/${product.id}'/>" class="title">${product.name}</a>
                         <div class="clearfix info">
-                            <a href="/gio-hang" class="add-to-cart"><i class="fa fa-cart-plus"></i></a>
-                            <span class="price-text">đ<span>${product.cost}</span></span>
+                            <a href="<c:url value="/gio-hang/them-hang/${product.id}"/>" class="add-to-cart"><i
+                                    class="fa fa-cart-plus"></i></a>
+                            <span class="price-text"><span><%=(long) ((Product) pageContext.getAttribute("product")).getCost()%></span>đ</span>
                         </div>
                     </div>
                 </li>
@@ -75,22 +78,24 @@
     <div class="product-listing">
         <h3><span>Mới</span></h3>
 
-            <ul class="clearfix">
-                <c:forEach  var="a" begin="${products.size()-4}" end="${products.size()}" items="${products}">
-                    <li class="product last">
+        <ul class="clearfix">
+            <c:forEach var="a" begin="${products.size()-4}" end="${products.size()}" items="${products}">
+                <li class="product last">
                     <a href="<c:url value = '/chi-tiet-san-pham/${a.id}'/>" class="thumb"><img
                             src="/image/products/${a.image}"
                             alt=""/></a>
                     <div class="data">
                         <a href="<c:url value = '/chi-tiet-san-pham/${a.id}'/>" class="title">${a.name}</a>
                         <div class="clearfix info">
-                            <a href="/gio-hang" class="add-to-cart"><i class="fa fa-cart-plus"></i></a>
-                            <span class="price-text">đ<span>${a.cost}</span></span>
+                            <a href="<c:url value="/gio-hang/them-hang/${a.id}"/>" class="add-to-cart">
+                                <i class="fa fa-cart-plus"></i>
+                            </a>
+                            <span class="price-text"><span><%=(long) ((Product) pageContext.getAttribute("a")).getCost()%></span>đ</span>
                         </div>
                     </div>
                 </li>
             </c:forEach>
-            </ul>
+        </ul>
     </div>
     <!-- END of LATEST PRODUCTS -->
 

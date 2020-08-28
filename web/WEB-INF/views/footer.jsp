@@ -117,32 +117,32 @@
 <!-- END of COPYRIGHTS-WRAPPER -->
 
 <!-- jQuery -->
-<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
 
 <!-- jQuery Easing -->
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
 
 <!-- jQuery Selectbox Script to custom style form select boxes -->
-<script type="text/javascript" src="js/jquery.selectBox.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.selectBox.js"></script>
 
 <!-- jQuery Cycle Plugin for home page slider-->
-<script type="text/javascript" src="js/jquery.cycle.all.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.cycle.all.js"></script>
 
 <!-- jQuery Tabs and Accordion Script -->
-<script type="text/javascript" src="js/tabs-accordian.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/tabs-accordian.js"></script>
 
 <!-- jQuery Coud Zoom Plugin for Product Page Image Zoom Effect-->
-<script type="text/JavaScript" src="js/cloud-zoom.1.0.2.js"></script>
+<script type="text/JavaScript" src="${pageContext.request.contextPath}/js/cloud-zoom.1.0.2.js"></script>
 
 <!-- jQuery Animate Color Plugin for Hover Color Animation for Links-->
-<script type="text/javascript" src="js/jquery.animate-colors-min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.animate-colors-min.js"></script>
 
 <!-- jQuery Form and Validation Plugin for Contact form validation and ajax submition -->
-<script type="text/javascript" src="js/jquery.form.js"></script>
-<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
 
 <!-- script file to add your own JavaScript -->
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
 </body>
 
 </html>
