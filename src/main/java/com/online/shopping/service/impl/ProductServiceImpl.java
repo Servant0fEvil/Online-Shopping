@@ -39,12 +39,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProductbyCat(int id) {
+    public List<Product> getProductByCat(int id) {
         return productDAO.getProductbyCat(id);
     }
 
     @Override
-    public List<Product> getProductbyType(int id) {
+    public List<Product> getProductByType(int id) {
         return productDAO.getProductbyType(id);
     }
 }

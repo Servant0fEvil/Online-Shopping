@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.online.shopping.model.Product" %>
+<%@ page import="com.online.shopping.model.ProductCategory" %>
+<%@ page import="com.online.shopping.model.ProductType" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: admin
   Date: 04/08/2020
@@ -15,168 +18,70 @@
 
             <div class="container">
                 <div class="row">
-
-
                     <div class="col-md-12">
                         <h1>Bảng tra cứu hàng hóa</h1>
                         <div class="table-responsive">
-                            <button onclick="themmoi()" id="themmoi"
+                            <button onclick="themmoi(true)" id="themmoi"
                                     class="au-btn au-btn-icon au-btn--green au-btn--small">
                                 <i class="zmdi zmdi-plus"></i>Thêm mới
                             </button>
-
-
                             <table id="mytable" class="table table-bordred table-striped">
-
                                 <thead>
-
                                 <th>Mã</th>
                                 <th>Hình ảnh</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Giá sản phẩm</th>
                                 <th>Tên ngành hàng</th>
                                 <th>Tên loại hàng</th>
-                                <th>Trạng thái hoạt động</th>
+                                <th>Trạng thái</th>
                                 <th>Chỉnh sửa</th>
                                 <th>Xóa</th>
-                                <th>Xác nhận</th>
                                 </thead>
                                 <tbody>
+                                <c:forEach var="item" items="${productList}">
+                                    <tr>
+                                        <td>${item.id}</td>
+                                        <td><img src="${pageContext.request.contextPath}/image/products/${item.image}">
+                                        </td>
+                                        <td>${item.name}</td>
+                                        <td><%=(long)((Product)pageContext.getAttribute("item")).getCost()%>đ</td>
+                                        <%
+                                            Product product = (Product) pageContext.getAttribute("item");
+                                            List<ProductType> types = (List<ProductType>) pageContext.getRequest().getAttribute("typeList");
+                                            List<ProductCategory> categories = (List<ProductCategory>) pageContext.getRequest().getAttribute("catList");
 
-                                <tr>
-                                    <td>001</td>
-                                    <td><img
-                                            src="https://images.samsung.com/is/image/samsung/vn-uhd-nu7090-ua43nu7090kxxv-frontblack-108921413?$PD_GALLERY_L_JPG$">
-                                    </td>
-                                    <td>Smart TV 4k</td>
-                                    <td>10.000.000</td>
-                                    <td>TV</td>
-                                    <td>Thiết bị điện tử</td>
-                                    <td><select>
-                                        <option>Hoạt động</option>
-                                        <option>Không hoạt động</option>
-                                    </select></td>
-                                    <td>
-                                        <p onclick="chinhsua()">
-                                            <button class="btn btn-primary btn-xs" data-title="Chỉnh sửa"
-                                                    data-toggle="modal" data-target="#edit"><span
-                                                    class="glyphicon glyphicon-pencil"></span></button>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <button onclick="xoa()" class="btn btn-danger btn-xs" data-title="Delete"
-                                                data-toggle="modal" data-target="#delete"><span
-                                                class="glyphicon glyphicon-trash"></span></button>
-                                    </td>
-                                    <td>
-                                        <button onclick="xacnhan()" class="btn au-btn--green  btn-xs"
-                                                data-title="Confirm" data-toggle="modal" data-target="#confirm"><span
-                                                class="glyphicon glyphicon-check"></span></button>
-                                    </td>
+                                            ProductType type = null;
+                                            for (ProductType t : types)
+                                                if (product.getTypeId() == product.getTypeId()) type = t;
 
-                                </tr>
-                                <tr>
-                                    <td>002</td>
-                                    <td><img
-                                            src="https://images-na.ssl-images-amazon.com/images/I/71Y1GnUpW3L.__AC_SY300_QL70_ML2_.jpg">
-                                    </td>
-                                    <td>LG gram Laptop</td>
-                                    <td>15.000.000</td>
-                                    <td>laptop</td>
-                                    <td>Thiết bị điện tử</td>
-                                    <td><select>
-                                        <option>Hoạt động</option>
-                                        <option>Không hoạt động</option>
-                                    </select></td>
-                                    <td>
-                                        <p onclick="chinhsua()">
-                                            <button class="btn btn-primary btn-xs" data-title="Chỉnh sửa"
-                                                    data-toggle="modal" data-target="#edit"><span
-                                                    class="glyphicon glyphicon-pencil"></span></button>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <button onclick="xoa()" class="btn btn-danger btn-xs" data-title="Delete"
-                                                data-toggle="modal" data-target="#delete"><span
-                                                class="glyphicon glyphicon-trash"></span></button>
-                                    </td>
-                                    <td>
-                                        <button onclick="xacnhan()" class="btn au-btn--green  btn-xs"
-                                                data-title="Confirm" data-toggle="modal" data-target="#confirm"><span
-                                                class="glyphicon glyphicon-check"></span></button>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>003</td>
-                                    <td><img
-                                            src="https://images.fpt.shop/unsafe/fit-in/840x472/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2019/11/19/637097817871944153_macbook-pro-16-1.JPG">
-                                    </td>
-                                    <td>MacBook Pro</td>
-                                    <td>69.000.000</td>
-                                    <td>laptop</td>
-                                    <td>Thiết bị điện tử</td>
-                                    <td><select>
-                                        <option>Hoạt động</option>
-                                        <option>Không hoạt động</option>
-                                    </select></td>
-                                    <td>
-                                        <p onclick="chinhsua()">
-                                            <button class="btn btn-primary btn-xs" data-title="Chỉnh sửa"
-                                                    data-toggle="modal" data-target="#edit"><span
-                                                    class="glyphicon glyphicon-pencil"></span></button>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <button onclick="xoa()" class="btn btn-danger btn-xs" data-title="Delete"
-                                                data-toggle="modal" data-target="#delete"><span
-                                                class="glyphicon glyphicon-trash"></span></button>
-                                    </td>
-                                    <td>
-                                        <button onclick="xacnhan()" class="btn au-btn--green  btn-xs"
-                                                data-title="Confirm" data-toggle="modal" data-target="#confirm"><span
-                                                class="glyphicon glyphicon-check"></span></button>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>004</td>
-                                    <td><img
-                                            src="https://cdn.tgdd.vn/Products/Images/42/200533/iphone-11-pro-max-green-600x600.jpg">
-                                    </td>
-                                    <td>iPhone 11 Pro Max</td>
-                                    <td>33.990.000</td>
-                                    <td>Điện thoại di động</td>
-                                    <td>Thiết bị điện tử</td>
-                                    <td><select>
-                                        <option>Hoạt động</option>
-                                        <option>Không hoạt động</option>
-                                    </select></td>
-                                    <td>
-                                        <p onclick="chinhsua()">
-                                            <button class="btn btn-primary btn-xs" data-title="Chỉnh sửa"
-                                                    data-toggle="modal" data-target="#edit"><span
-                                                    class="glyphicon glyphicon-pencil"></span></button>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <button onclick="xoa()" class="btn btn-danger btn-xs" data-title="Delete"
-                                                data-toggle="modal" data-target="#delete"><span
-                                                class="glyphicon glyphicon-trash"></span></button>
-                                    </td>
-                                    <td>
-                                        <button onclick="xacnhan()" class="btn au-btn--green  btn-xs"
-                                                data-title="Confirm" data-toggle="modal" data-target="#confirm"><span
-                                                class="glyphicon glyphicon-check"></span></button>
-                                    </td>
-
-                                </tr>
-
-
+                                            ProductCategory cat = null;
+                                            for (ProductCategory c : categories)
+                                                if (type.getCatID() == c.getId()) cat = c;
+                                            out.write("<td>" + cat.getNameCat() + "</td>");
+                                            out.write("<td>" + type.getNameType() + "</td>");
+                                        %>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${item.state == 1}">Bình thường</c:when>
+                                                <c:otherwise>Bị khóa</c:otherwise>
+                                            </c:choose>
+                                        </td>
+                                        <td>
+                                            <p onclick="chinhsua(true)">
+                                                <button class="btn btn-primary btn-xs" data-title="Chỉnh sửa"
+                                                        data-toggle="modal" data-target="#edit"><span
+                                                        class="glyphicon glyphicon-pencil"></span></button>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <button onclick="xoa()" class="btn btn-danger btn-xs" data-title="Delete"
+                                                    data-toggle="modal" data-target="#delete"><span
+                                                    class="glyphicon glyphicon-trash"></span></button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
-
                             </table>
-
                             <div class="clearfix"></div>
                             <ul class="pagination pull-right">
                                 <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -272,7 +177,7 @@
 
                             <button class="btn btn-primary">Lưu</button>
 
-                            <button class="btn btn-primary">Hủy</button>
+                            <button class="btn btn-primary" onclick="themmoi(false)">Hủy</button>
                         </div>
                     </div>
                 </form>
@@ -355,7 +260,7 @@
 
                             <button class="btn btn-primary">Lưu</button>
 
-                            <button class="btn btn-primary">Hủy</button>
+                            <button class="btn btn-primary" onclick="chinhsua(false)">Hủy</button>
                         </div>
                     </div>
 

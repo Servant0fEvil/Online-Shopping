@@ -151,7 +151,7 @@ public class MainController {
 
         model.addObject("category",productCatService.getAllProductCategory());
 
-        model.addObject("products",productService.getProductbyType(id));
+        model.addObject("products",productService.getProductByType(id));
 
         model.addObject("nameType",name);
 
@@ -162,7 +162,7 @@ public class MainController {
     public ModelAndView xemTheoNganhHang(@PathVariable int id,@PathVariable String name) {
         ModelAndView model = new ModelAndView("KhachHang/XemTheoNganhHang");
 
-        model.addObject("products",productService.getProductbyCat(id));
+        model.addObject("products",productService.getProductByCat(id));
 
         model.addObject("type",productTypeService.getTypebyCat(id));
 

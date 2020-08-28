@@ -3,8 +3,8 @@ package com.online.shopping.controller;
 
 import com.online.shopping.model.Admin;
 import com.online.shopping.model.Member;
-import com.online.shopping.service.AdminService;
-import com.online.shopping.service.MemberService;
+import com.online.shopping.model.ProductCategory;
+import com.online.shopping.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +30,15 @@ public class AdminController {
 
     @Autowired
     AdminService adminService;
+
+    @Autowired
+    ProductCatService productCatService;
+
+    @Autowired
+    ProductService productService;
+
+    @Autowired
+    ProductTypeService productTypeService;
 
     @Autowired
     ServletContext context;
@@ -134,7 +143,6 @@ public class AdminController {
     public ModelAndView deleteStaff(@RequestParam("admin-id") int id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/managers/staff-manager");
         adminService.deleteAdmin(id);
-        System.out.println(id);
         return modelAndView;
     }
 
@@ -186,7 +194,29 @@ public class AdminController {
     public ModelAndView categoryManager() {
         ModelAndView modelAndView = new ModelAndView("manager/nganhHang");
         modelAndView.addObject("active", "quan-li-nganh-hang");
+        modelAndView.addObject("listCat", productCatService.getAllProductCategory());
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/category-manager/new", method = RequestMethod.POST)
+    public String newCategory(@RequestParam("name") String name) {
+        ProductCategory cat = new ProductCategory(name, 1);
+        productCatService.addProductCategory(cat);
+        return "redirect:/managers/category-manager";
+    }
+
+    @RequestMapping(value = "/category-manager/delete", method = RequestMethod.POST)
+    public String deleteCategory(@RequestParam("delete-cat-id") int id) {
+        productCatService.deleteProductCategory(id);
+        return "redirect:/managers/category-manager";
+    }
+
+    @RequestMapping(value = "/category-manager/edit", method = RequestMethod.POST)
+    public String editCategory(@RequestParam("id") int id, @RequestParam("name") String newName) {
+        ProductCategory cat = productCatService.getProductCategory(id);
+        cat.setNameCat(newName);
+        productCatService.updateProductCategory(cat);
+        return "redirect:/managers/category-manager";
     }
 
     @RequestMapping("/type-manager")
@@ -200,6 +230,9 @@ public class AdminController {
     public ModelAndView productManager() {
         ModelAndView modelAndView = new ModelAndView("manager/hangHoa");
         modelAndView.addObject("active", "quan-li-hang-hoa");
+        modelAndView.addObject("productList", productService.getAllProduct());
+        modelAndView.addObject("typeList",productTypeService.getAllProductType());
+        modelAndView.addObject("catList",productCatService.getAllProductCategory());
         return modelAndView;
     }
 

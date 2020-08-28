@@ -74,7 +74,7 @@
                                                       action="${pageContext.request.contextPath}/managers/staff-manager/delete"
                                                       method="post">
                                                     <input type="hidden" name="admin-id"
-                                                           value='${item.id}' id="del-admin-id-${item.id}"/>
+                                                           value='${item.id}'/>
                                                     <button class="btn btn-danger btn-xs" data-title="Delete"
                                                             data-toggle="modal" type="submit"
                                                             onClick="return confirm('Bạn có chắc chắn muốn xóa?')">
