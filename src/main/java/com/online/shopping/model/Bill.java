@@ -2,7 +2,7 @@ package com.online.shopping.model;
 
 public abstract class Bill {
     protected int id;
-    private Transaction trans;
+    private int transId;
     private PaymentMethod method;
     private double totalMoney;
 
@@ -14,12 +14,12 @@ public abstract class Bill {
         this.id = id;
     }
 
-    public Transaction getTrans() {
-        return trans;
+    public int getTransId() {
+        return transId;
     }
 
-    public void setTrans(Transaction trans) {
-        this.trans = trans;
+    public void setTransId(int transId) {
+        this.transId = transId;
     }
 
     public PaymentMethod getMethod() {

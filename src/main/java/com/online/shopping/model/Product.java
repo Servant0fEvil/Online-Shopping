@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Product {
     private int id;
-    private int IDType;
+    private int typeId;
     private String name;
     private double cost;
     private int IDProducer;
@@ -18,8 +18,8 @@ public class Product {
 
     }
 
-    public Product(int IDType, String name, double cost, int IDProducer, Date importDate, int quantity, String image, String detail, int state) {
-        this.IDType = IDType;
+    public Product(int typeId, String name, double cost, int IDProducer, Date importDate, int quantity, String image, String detail, int state) {
+        this.typeId = typeId;
         this.name = name;
         this.cost = cost;
         this.IDProducer = IDProducer;
@@ -94,12 +94,12 @@ public class Product {
         this.state = state;
     }
 
-    public int getIDType() {
-        return IDType;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public void setIDType(int IDType) {
-        this.IDType = IDType;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 
     public int getIDProducer() {

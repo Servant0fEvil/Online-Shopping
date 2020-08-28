@@ -24,13 +24,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public int addAdmin(Admin Admin) {
-        return adminDAO.addAdmin(Admin);
+    public int addAdmin(Admin admin) {
+        return adminDAO.addAdmin(admin);
     }
 
     @Override
-    public int updateAdmin(Admin Admin) {
-        return adminDAO.updateAdmin(Admin);
+    public int updateAdmin(int id, String name, String address, String phone, String email, String avt) {
+        return adminDAO.updateAdmin(id,name,address,phone,email,avt);
     }
 
     @Override

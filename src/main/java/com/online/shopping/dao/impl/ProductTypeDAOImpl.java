@@ -3,10 +3,8 @@ package com.online.shopping.dao.impl;
 import com.online.shopping.dao.ProductTypeDAO;
 import com.online.shopping.model.ProductType;
 import com.online.shopping.rowmapper.ProductTypeRowMapper;
-import com.online.shopping.rowmapper.ProductTypeRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,7 +41,7 @@ public class ProductTypeDAOImpl implements ProductTypeDAO {
         insert.withTableName("loaihang").usingGeneratedKeyColumns("ID_loaihang");
         Map<String, Object> parameters = new HashMap<>(3);
         parameters.put("TenLoaiHang",ProductType.getNameType());
-        parameters.put("ID_nganhhang",ProductType.getIDCategory());
+        parameters.put("ID_nganhhang",ProductType.getCatID());
         parameters.put("TrangThai",ProductType.getState());
 
         Number insertId = insert.executeAndReturnKey(parameters);

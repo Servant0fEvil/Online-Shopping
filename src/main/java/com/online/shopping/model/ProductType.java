@@ -3,16 +3,16 @@ package com.online.shopping.model;
 public class ProductType {
     private int id;
     private String nameType;
-    private int IDCategory;
+    private int catID;
     private int state;
 
     public ProductType() {
 
     }
 
-    public ProductType(String nameType, int IDCategory, int state) {
+    public ProductType(String nameType, int catID, int state) {
         this.nameType = nameType;
-        this.IDCategory = IDCategory;
+        this.catID = catID;
         this.state = state;
     }
 
@@ -32,12 +32,12 @@ public class ProductType {
         this.nameType = nameType;
     }
 
-    public int getIDCategory() {
-        return IDCategory;
+    public int getCatID() {
+        return catID;
     }
 
-    public void setIDCategory(int IDCategory) {
-        this.IDCategory = IDCategory;
+    public void setCatID(int catID) {
+        this.catID = catID;
     }
 
     public int getState() {

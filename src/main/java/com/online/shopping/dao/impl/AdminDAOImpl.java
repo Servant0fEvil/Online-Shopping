@@ -2,8 +2,6 @@ package com.online.shopping.dao.impl;
 
 import com.online.shopping.dao.AdminDAO;
 import com.online.shopping.model.Admin;
-import com.online.shopping.model.Admin;
-import com.online.shopping.rowmapper.AdminRowMapper;
 import com.online.shopping.rowmapper.AdminRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -65,12 +63,10 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
     @Transactional
-    public int updateAdmin(Admin Admin) {
-        String sql = "update admin set TaiKhoan = ?,MatKhau = ?,HoVaTen = ?,DiaChi = ?," +
-                "GioiTinh = ?,Avatar = ?,DienThoai = ?,Email = ?,NgaySinh = ? where ID_admin = ?";
+    public int updateAdmin(int id, String name, String address, String phone, String email, String avt) {
+        String sql = "update admin set HoVaTen = ?,DiaChi = ?,Avatar = ?,DienThoai = ?,Email = ? where ID_admin = ?";
 
-        return jdbcTemplate.update(sql, new Object[]{Admin.getUserName(), Admin.getPassWord(), Admin.getAddress(), Admin.getSex(),
-                Admin.getAvatar(), Admin.getPhone(), Admin.getEmail(), Admin.getBirthday(), Admin.getId()});
+        return jdbcTemplate.update(sql, new Object[]{name, address,avt,phone, email,id});
     }
 
     @Transactional
@@ -81,7 +77,7 @@ public class AdminDAOImpl implements AdminDAO {
     @Transactional
     public Admin validate(Admin Admin) {
         String sql = "select * from admin where TaiKhoan='" + Admin.getUserName() + "' and MatKhau='" + Admin.getPassWord()+ "'";
-        List<Admin> users = jdbcTemplate.query(sql, new AdminRowMapper());
+        List<com.online.shopping.model.Admin> users = jdbcTemplate.query(sql, new AdminRowMapper());
         return users.size() > 0 ? users.get(0) : null;
     }
 }

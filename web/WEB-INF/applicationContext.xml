@@ -20,11 +20,17 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- maxUploadSize=20MB -->
+        <property name="maxUploadSize" value="20971520"/>
+    </bean>
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="username" value="root"/>
         <property name="password" value=""/>
-        <property name="url" value="jdbc:mysql://localhost:3306/db?serverTimezone=UTC"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/db_web?serverTimezone=UTC"/>
     </bean>
 
     <bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate">

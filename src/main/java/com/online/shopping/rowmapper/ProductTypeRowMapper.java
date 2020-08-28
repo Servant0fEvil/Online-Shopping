@@ -14,7 +14,7 @@ public class ProductTypeRowMapper implements RowMapper<ProductType> {
             ProductType productType = new ProductType();
             productType.setId(rs.getInt("ID_loaihang"));
             productType.setNameType(rs.getString("TenLoaiHang"));
-            productType.setIDCategory(rs.getInt("ID_nganhhang"));
+            productType.setCatID(rs.getInt("ID_nganhhang"));
             productType.setState(rs.getInt("TrangThai"));
             return productType;
     }

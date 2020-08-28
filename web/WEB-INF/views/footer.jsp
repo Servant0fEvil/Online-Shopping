@@ -14,7 +14,7 @@
 
         <div class="box">
             <div class="icon">
-                <img src="images/icon-1.png" alt=""/>
+                <img src="image/icon-1.png" alt=""/>
             </div>
             <div class="data">
                 <h3>MUA SẮM OLINE ĐƠN GIẢN NHANH CHÓNG VÀ AN TOÀN</h3>
@@ -26,7 +26,7 @@
 
         <div class="box">
             <div class="icon">
-                <img src="images/icon-2.png" alt=""/>
+                <img src="image/icon-2.png" alt=""/>
             </div>
             <div class="data">
                 <h3>MUA HÀNG CHÍNH HÃNG TỪ CÁC THƯƠNG HIỆU LỚN</h3>
@@ -38,7 +38,7 @@
 
         <div class="box last">
             <div class="icon">
-                <img src="images/icon-3.png" alt=""/>
+                <img src="image/icon-3.png" alt=""/>
             </div>
             <div class="data">
                 <h3>MUA BÁN ONLINE MỌI LÚC, MỌI NƠI</h3>
@@ -108,9 +108,8 @@
 <div class="copyright-wrapper">
 
     <div id="copyrights" class="clearfix">
-        <p class="left">copyright of <a href="#">bonfire</a> <span>2020</span> All Rights Reserved</p>
-        <p class="right">Designed by <a href="http://themedesigner.in/">Sunil Joshi</a> and Developed by <a
-                href="http://960development.com/">960Development</a></p>
+        <p class="right">Designed by <a href="https://github.com/Servant0fEvil/Online-Shopping">SOE</a> and Developed by <a
+                href="https://github.com/Servant0fEvil">Team profess(Nub team)</a></p>
     </div><!-- end of #copyrights -->
 
 </div>

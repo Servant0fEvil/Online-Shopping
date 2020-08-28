@@ -43,7 +43,7 @@ public class ProductDAOImpl implements ProductDAO {
         SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate);
         insert.withTableName("sanpham").usingGeneratedKeyColumns("ID_sanpham");
         Map<String, Object> parameters = new HashMap<>(9);
-        parameters.put("ID_loaihang",product.getIDType());
+        parameters.put("ID_loaihang",product.getTypeId());
         parameters.put("TenSanPham",product.getName());
         parameters.put("GiaTien",product.getCost());
         parameters.put("ID_nhacungcap",product.getIDProducer());
@@ -63,7 +63,7 @@ public class ProductDAOImpl implements ProductDAO {
         String sql = "update sanpham set ID_loaihang = ?,TenSanPham = ?,GiaTien = ?,ID_nhacungcap = ?," +
                 "NgayNhap = ?, SoLuong= ?,Anh = ?,MoTaSanPham = ?,TrangThai = ? where ID_sanpham = ?";
 
-        return jdbcTemplate.update(sql, new Object[]{product.getIDType(),product.getName(),product.getCost(),product.getIDProducer(),product.getImportDate(),
+        return jdbcTemplate.update(sql, new Object[]{product.getTypeId(),product.getName(),product.getCost(),product.getIDProducer(),product.getImportDate(),
         product.getQuantity(),product.getImage(),product.getDetail(),product.getState(),product.getId()});
     }
 

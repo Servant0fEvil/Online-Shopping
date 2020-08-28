@@ -24,7 +24,7 @@
                         <li><a class="thumbnail cloud-zoom-gallery"
                                title='Thumbnail 1'
                                rel="useZoom: 'zoom1', smallImage: ">
-                            <img src="/image/products/${product.id}-${i}.jpg"
+                            <img src="/image/product-gallery/${product.id}-${i}.jpg"
                                  alt=""/>
                         </a>
                         </li>
@@ -65,7 +65,7 @@
                             <label>Số lượng:</label>
                             <input type="text" value="1"/>
                         </p>
-                        <input type="submit" class="submit-btn" value="Thêm vào giỏ hàng"/>
+                      <button > <a href="<c:url value="/gio-hang/them-hang/${product.id}"/>" class="add-to-cart">Thêm vào giỏ hàng</a></button>
                     </fieldset>
                 </form><!-- end of .available-options -->
                 <p class="add-links">

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Report {
     private int id;
     private int type;
-    private Member member;
+    private int memberId;
     private String title;
     private String content;
     private Date postDate;
@@ -27,12 +27,12 @@ public class Report {
         this.type = type;
     }
 
-    public Member getMember() {
-        return member;
+    public int getMemberId() {
+        return memberId;
     }
 
-    public void setMember(Member member) {
-        this.member = member;
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
     }
 
     public String getTitle() {

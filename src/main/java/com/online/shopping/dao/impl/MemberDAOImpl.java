@@ -22,7 +22,9 @@ public class MemberDAOImpl implements MemberDAO {
     public Member getMember(int id) {
         String sql = "select * from thanhvien where ID_thanhvien = ?";
 
-        return jdbcTemplate.queryForObject(sql, new Object[]{id}, new MemberRowMapper());
+        Member member = jdbcTemplate.queryForObject(sql, new Object[]{id}, new MemberRowMapper());
+
+        return member;
     }
 
     @Transactional
@@ -64,6 +66,13 @@ public class MemberDAOImpl implements MemberDAO {
 
         return jdbcTemplate.update(sql, new Object[]{member.getUserName(), member.getPassWord(), member.getAddress(), member.getSex(),
                 member.getAvatar(), member.getPhone(), member.getEmail(), member, member.getBirthday(), member.getId()});
+    }
+
+    @Override
+    public int updateMember(int id, String name, String address, String phone, String email, String avt) {
+        String sql = "update thanhvien set HoVaTen = ?,DiaChi = ?,Avatar = ?,DienThoai = ?,Email = ? where ID_thanhvien = ?";
+
+        return jdbcTemplate.update(sql, new Object[]{name, address,avt,phone, email,id});
     }
 
     @Transactional

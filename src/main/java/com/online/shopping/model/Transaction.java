@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Transaction {
     private int id;
-    private Bill bill;
-    private Product product;
+    private int billId;
+    private int productId;
     private int quantity;
     private double cost;
     private double discount;
@@ -19,20 +19,28 @@ public class Transaction {
         this.id = id;
     }
 
-    public Bill getBill() {
-        return bill;
+    public int getBillId() {
+        return billId;
     }
 
-    public void setBill(Bill bill) {
-        this.bill = bill;
+    public void setBillId(int billId) {
+        this.billId = billId;
     }
 
-    public Product getProduct() {
-        return product;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public Date getTransDate() {
+        return transDate;
+    }
+
+    public void setTransDate(Date transDate) {
+        this.transDate = transDate;
     }
 
     public int getQuantity() {
