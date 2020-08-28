@@ -10,4 +10,5 @@ public interface MemberService {
     public int addMember(Member member);
     public int updateMember(Member member);
     public int deleteMember(int id);
+    public Member validate(Member member);
 }

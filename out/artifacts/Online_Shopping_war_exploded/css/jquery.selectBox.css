@@ -37,7 +37,7 @@
 	right: 0;
 	width: 22px;
 	height: 100%;
-	background: url(/images/select-arrow.png) 50% center no-repeat;
+	background: url(/image/select-arrow.png) 50% center no-repeat;
 }
 
 .checkout-selectbox .selectBox-dropdown {
@@ -84,7 +84,7 @@
 	right: 0;
 	width: 23px;
 	height: 100%;
-	background: url(/images/select-arrow.png) 50% center no-repeat;
+	background: url(/image/select-arrow.png) 50% center no-repeat;
 }
 
 

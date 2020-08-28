@@ -10,29 +10,14 @@ public class Member {
     private String address;
     private int sex;
     private String avatar;
-    private int phone;
+    private String phone;
     private String email;
     private Date birthday;
     private Date regDate;
     private Date lastLogin;
     private int status;
 
-    public Member(int id, String userName, String passWord, String name, String address, int sex, String avatar, int phone, String email, Date birthday, Date regDate, Date lastLogin, int status) {
-        this.id = id;
-        this.passWord = passWord;
-        this.name = name;
-        this.address = address;
-        this.sex = sex;
-        this.avatar = avatar;
-        this.phone = phone;
-        this.email = email;
-        this.birthday = birthday;
-        this.regDate = regDate;
-        this.lastLogin = lastLogin;
-        this.status = status;
-    }
-
-    public Member(String userName, String passWord, String name, String address, int sex, String avatar, int phone, String email, Date birthday, Date regDate, Date lastLogin, int status) {
+    public Member(String userName, String passWord, String name, String address, String phone, String email,int sex,String avatar, Date birthday, Date regDate, Date lastLogin, int status) {
         this.userName = userName;
         this.passWord = passWord;
         this.name = name;
@@ -49,6 +34,11 @@ public class Member {
 
     public Member(){
 
+    }
+
+    public Member(String userName, String passWord) {
+        this.userName = userName;
+        this.passWord = passWord;
     }
 
     public int getId() {
@@ -107,11 +97,11 @@ public class Member {
         this.avatar = avatar;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Report {
     private int id;
-    private ReportType type;
+    private int type;
     private Member member;
     private String title;
     private String content;
@@ -19,11 +19,11 @@ public class Report {
         this.id = id;
     }
 
-    public ReportType getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(ReportType type) {
+    public void setType(int type) {
         this.type = type;
     }
 

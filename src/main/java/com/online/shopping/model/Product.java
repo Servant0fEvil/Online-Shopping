@@ -1,16 +1,34 @@
 package com.online.shopping.model;
 
+import java.util.Date;
+
 public class Product {
     private int id;
-    private ProductType ProductType;
+    private int IDType;
     private String name;
     private double cost;
-    private Producer Producer;
-    private int importDate;
+    private int IDProducer;
+    private Date importDate;
     private int quantity;
-    private int image;
+    private String image;
     private String detail;
     private int state;
+
+    public Product() {
+
+    }
+
+    public Product(int IDType, String name, double cost, int IDProducer, Date importDate, int quantity, String image, String detail, int state) {
+        this.IDType = IDType;
+        this.name = name;
+        this.cost = cost;
+        this.IDProducer = IDProducer;
+        this.importDate = importDate;
+        this.quantity = quantity;
+        this.image = image;
+        this.detail = detail;
+        this.state = state;
+    }
 
     public int getId() {
         return id;
@@ -36,11 +54,11 @@ public class Product {
         this.cost = cost;
     }
 
-    public int getImportDate() {
+    public Date getImportDate() {
         return importDate;
     }
 
-    public void setImportDate(int importDate) {
+    public void setImportDate(Date importDate) {
         this.importDate = importDate;
     }
 
@@ -52,11 +70,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String  image) {
         this.image = image;
     }
 
@@ -76,19 +94,19 @@ public class Product {
         this.state = state;
     }
 
-    public ProductType getProductType() {
-        return ProductType;
+    public int getIDType() {
+        return IDType;
     }
 
-    public void setProductType(ProductType productType) {
-        ProductType = productType;
+    public void setIDType(int IDType) {
+        this.IDType = IDType;
     }
 
-    public Producer getProducer() {
-        return Producer;
+    public int getIDProducer() {
+        return IDProducer;
     }
 
-    public void setProducer(Producer producer) {
-        Producer = producer;
+    public void setIDProducer(int  IDProducer) {
+        this.IDProducer = IDProducer;
     }
 }

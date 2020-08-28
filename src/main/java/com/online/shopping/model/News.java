@@ -6,7 +6,7 @@ public class News {
     private int id;
     private String title;
     private String content;
-    private Admin admin;
+    private int idAdmin;
     private Date postDate;
     private int state;
 
@@ -34,12 +34,12 @@ public class News {
         this.content = content;
     }
 
-    public Admin getAdmin() {
-        return admin;
+    public int getIdAdmin(){
+        return idAdmin;
     }
 
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
+    public void setIdAdmin(int admin) {
+        this.idAdmin = admin;
     }
 
     public Date getPostDate() {

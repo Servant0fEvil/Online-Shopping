@@ -20,7 +20,7 @@ public class MemberRowMapper implements RowMapper<Member> {
         member.setAddress(rs.getString("DiaChi"));
         member.setSex(rs.getInt("GioiTinh"));
         member.setAvatar(rs.getString("Avatar"));
-        member.setPhone(rs.getInt("DienThoai"));
+        member.setPhone(rs.getString("DienThoai"));
         member.setEmail(rs.getString("Email"));
 
         try {
